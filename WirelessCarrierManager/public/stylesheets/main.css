@@ -1,0 +1,25 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:300,400,500);
+
+body, p, h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	font-family: "Ubuntu", sans-serif;
+}
+
+.menu-bar {
+	position: fixed;
+	width: 100%;
+	height: 70px;
+	padding: 0 10px 0 10px;
+	background-color: #2ABFFA;
+}
+
+.content {
+	padding: 75px 5px 5px 5px;
+}
+
+.hero-unit {
+	background-color: #EEEEEE;
+	padding: 30px;
+	margin: 20px;
+	border-radius: 10px;
+}
