@@ -1,5 +1,8 @@
 @import url(http://fonts.googleapis.com/css?family=Ubuntu:300,400,500);
 
+::selection { background: #A6E6FF; color: #000; } /* Safari 3.1+, Opera 9.5+, Chrome 2+ */
+::-moz-selection { background: #A6E6FF; color: #000; } /* Mozilla Firefox */
+
 body, p, h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 	font-family: "Ubuntu", sans-serif;
@@ -22,4 +25,26 @@ body, p, h1, h2, h3, h4, h5, h6 {
 	padding: 30px;
 	margin: 20px;
 	border-radius: 10px;
+}
+
+button {
+	background-color: #2ABFFA;
+	height: 50px;
+	min-width: 80px;
+	border: 2px solid #ddd;
+	border-radius: 5px;	
+	margin-top: 5px;
+	margin-bottom: 5px;
+	transition-duration: 0.5s;
+	font-size: 11pt;
+	color: white;
+	text-shadow: 1px 1px #1AAFDA;
+}
+
+button:hover {
+	background-color: #3ACFFF;
+}
+
+button:active {
+	background-color: #0A9FCA;
 }
