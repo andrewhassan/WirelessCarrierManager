@@ -1,0 +1,57 @@
+@(carriers: List[Carrier])(plans: List[Plan])(planPools: List[PlanPool])(sims: List[SimCard])
+
+@main("Manage") {
+	<div class="hero-unit">
+		<h1>Manage</h1>
+		<div class="divider"></div>
+		<h2>Carriers</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Carrier Id</th>
+					<th>Carrier Name</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			@for(carrier <- carriers) {
+				<tr>
+					<td>@carrier.carrierId</td>
+					<td>@carrier.carrierName</td>
+					<td style="font-family:monospace;">TODO</td>
+				</tr>
+			}
+		</table>
+		<a href="#"><button>Add New Carrier</button></a>
+		
+		<div class="divider"></div>
+		<h2>Plans</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Plan Id</th>
+					<th>Billing Period (in days)</th>
+					<th>Flat Rate Per Billing Period</th>
+					<th>Rate/byte</th>
+					<th>Max. Data (in bytes)</th>
+					<th>Overage Rate/byte</th>
+					<th>Carrier Id</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			@for(plan <- plans) {
+				<tr>
+					<td>@plan.planId</td>
+					<td>@plan.billingPeriodInDays</td>
+					<td>@plan.flatRatePerBillingPeriod</td>
+					<td>@plan.dataRatePerByte</td>
+					<td>@plan.numBytesUntilOverage</td>
+					<td>@plan.overageDataRatePerByte</td>
+					<td>@plan.carrier.carrierId</td>
+					<td style="font-family: monospace">TODO</td>
+				</tr>
+			}
+		</table>
+		<a href="#"><button>Add New Plan</button></a>
+	</div>
+} {
+}
