@@ -51,4 +51,16 @@ public class TestService extends ApiService {
 		return null;
 	}
 
+	@Override
+	public void reauthenticate() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Boolean isStillAuthenticated() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

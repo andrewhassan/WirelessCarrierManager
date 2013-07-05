@@ -14,6 +14,8 @@ public class PlanPool extends Model {
 	@Id
 	public Long poolId;
 	
+	public String displayName;
+	
 	@ManyToOne
 	public Plan plan;
 	
@@ -21,7 +23,10 @@ public class PlanPool extends Model {
 	public List<SimCard> simCards;
 	
 	@Required
-	public Long totalBytes;
+	public Boolean isUnlimited;
+	
+	@Required
+	public Long maxBytes;
 	
 	public static Model.Finder<Long, PlanPool> find = new Model.Finder<Long, PlanPool>(Long.class, PlanPool.class);
 }

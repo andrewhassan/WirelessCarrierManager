@@ -3,6 +3,7 @@
 @main("Manage") {
 	<div class="hero-unit">
 		<h1>Manage</h1>
+		<h2>Note: This page is for development only</h2>
 		<div class="divider"></div>
 		<h2>Carriers</h2>
 		<table>
@@ -10,17 +11,18 @@
 				<tr>
 					<th>Carrier Id</th>
 					<th>Carrier Name</th>
-					<th>Number of Plans</th>
+					<th>Actions</th>
 				</tr>
 			</thead>
 			@for(carrier <- carriers) {
 				<tr>
 					<td>@carrier.carrierId</td>
 					<td>@carrier.carrierName</td>
-					<td>@carrier.plans.size()</td>
+					<td style="font-family:monospace;">TODO</td>
 				</tr>
 			}
 		</table>
+		<a href="#"><button>Add New Carrier</button></a>
 		
 		<div class="divider"></div>
 		<h2>Plans</h2>
@@ -34,6 +36,7 @@
 					<th>Max. Data (in bytes)</th>
 					<th>Overage Rate/byte</th>
 					<th>Carrier Id</th>
+					<th>Actions</th>
 				</tr>
 			</thead>
 			@for(plan <- plans) {
@@ -45,9 +48,11 @@
 					<td>@plan.numBytesUntilOverage</td>
 					<td>@plan.overageDataRatePerByte</td>
 					<td>@plan.carrier.carrierId</td>
+					<td style="font-family: monospace">TODO</td>
 				</tr>
 			}
 		</table>
+		<a href="#"><button>Add New Plan</button></a>
 		
 		<div class="divider"></div>
 		<h2>Plan Pools</h2>
@@ -64,35 +69,12 @@
 				<tr>
 					<td>@pool.poolId</td>
 					<td>@pool.plan.planId</td>
-					<td>@(if (pool.isUnlimited) "Unlimited" else pool.maxBytes)</td>
+					<td>@pool.maxBytes</td>
 					<td>@pool.simCards.size()</td>
 				</tr>
 			}
 		</table>
 		<a href="#"><button>Add New Plan Pool</button></a>
-		
-		<div class="divider"></div>
-		<h2>SIM Cards</h2>
-		<table>
-			<thead>
-				<tr>
-					<th>SIM Id</th>
-					<th>SIM Name</th>
-					<th>Pool Id</th>
-					<th>Data Usage for the Past Month</th>
-					<th>Actions</th>
-				</tr>
-			</thead>
-			@for(sim <- sims) {
-				<tr>
-					<td>@sim.simId</td>
-					<td>@sim.displayName</td>
-					<td>@sim.pool.poolId</td>
-					<td>TODO</td>
-					<td><a href="#">Move to another pool</a></td>
-				</tr>
-			}
-		</table>
 		
 	</div>
 } {

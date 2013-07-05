@@ -22,8 +22,10 @@ create table plan (
 
 create table plan_pool (
   pool_id                   bigint auto_increment not null,
+  display_name              varchar(255),
   plan_plan_id              bigint,
-  total_bytes               bigint,
+  is_unlimited              tinyint(1) default 0,
+  max_bytes                 bigint,
   constraint pk_plan_pool primary key (pool_id))
 ;
 
