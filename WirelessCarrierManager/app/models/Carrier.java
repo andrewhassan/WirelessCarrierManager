@@ -17,7 +17,7 @@ public class Carrier extends Model {
 	@Required
 	public String carrierName;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "carrier")
 	public List<Plan> plans;
 	
 	public static Model.Finder<Long, Carrier> find = new Model.Finder<Long, Carrier>(Long.class, Carrier.class);

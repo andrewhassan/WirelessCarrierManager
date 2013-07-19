@@ -16,20 +16,6 @@ public abstract class ApiService {
 	 */
 	@SuppressWarnings("unused")
 	private Credential m_credential = authenticate();
-	
-	/**
-	 * This method is so that the analytics service can create a subclass of ApiService at runtime.
-	 * @return A new instance of the subclass.
-	 */
-	public ApiService newInstance() {
-		try {
-            return this.getClass().newInstance(); 
-        } catch( InstantiationException ie ){
-            throw new RuntimeException( ie );
-        } catch( IllegalAccessException iae ){
-            throw new RuntimeException( iae );
-        }
-	}
 
 	/**
 	 * This method is run on class instantiation and the result is stored in private variable "m_credential".

@@ -76,7 +76,7 @@
 		<table>
 			<thead>
 				<tr>
-					<th>SIM Id</th>
+					<th>SIM Number</th>
 					<th>SIM Name</th>
 					<th>Pool Id</th>
 					<th>Data Usage for the Past Month</th>
@@ -85,7 +85,7 @@
 			</thead>
 			@for(sim <- sims) {
 				<tr>
-					<td>@sim.simId</td>
+					<td>@sim.simNumber</td>
 					<td>@sim.displayName</td>
 					<td>@sim.pool.poolId</td>
 					<td>TODO</td>

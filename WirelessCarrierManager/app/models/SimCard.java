@@ -1,10 +1,7 @@
 package models;
 
 import java.util.List;
-
 import javax.persistence.*;
-import play.db.ebean.*;
-import play.data.validation.*;
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
 
@@ -13,16 +10,16 @@ public class SimCard extends Model {
 	private static final long serialVersionUID = 8664141460726922270L;
 
 	@Id
-	public String simId;
-	
 	@Required
+	public String simNumber;
+	
 	public String displayName;
 	
 	@ManyToOne
 	public PlanPool pool;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "simCard")
 	public List<SimUsage> usages;
 	
-	public static Model.Finder<Long, SimCard> find = new Model.Finder<Long, SimCard>(Long.class, SimCard.class);
+	public static Model.Finder<String, SimCard> find = new Model.Finder<String, SimCard>(String.class, SimCard.class);
 }

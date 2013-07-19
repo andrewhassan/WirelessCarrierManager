@@ -19,14 +19,20 @@ public class PlanPool extends Model {
 	@ManyToOne
 	public Plan plan;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "pool")
 	public List<SimCard> simCards;
 	
 	@Required
 	public Boolean isUnlimited;
 	
 	@Required
+	public Boolean isDefaultPool;
+	
+	@Required
 	public Long maxBytes;
+	
+	@Required
+	public Long maxCards;
 	
 	public static Model.Finder<Long, PlanPool> find = new Model.Finder<Long, PlanPool>(Long.class, PlanPool.class);
 }

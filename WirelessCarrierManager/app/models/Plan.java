@@ -27,7 +27,7 @@ public class Plan extends Model {
 	@Required
 	public Double overageDataRatePerByte;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "plan")
 	public List<PlanPool> pools;
 	
 	@ManyToOne

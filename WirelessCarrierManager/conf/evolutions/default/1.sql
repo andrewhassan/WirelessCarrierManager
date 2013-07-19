@@ -25,20 +25,22 @@ create table plan_pool (
   display_name              varchar(255),
   plan_plan_id              bigint,
   is_unlimited              tinyint(1) default 0,
+  is_default_pool           tinyint(1) default 0,
   max_bytes                 bigint,
+  max_cards                 bigint,
   constraint pk_plan_pool primary key (pool_id))
 ;
 
 create table sim_card (
-  sim_id                    varchar(255) not null,
+  sim_number                varchar(255) not null,
   display_name              varchar(255),
   pool_pool_id              bigint,
-  constraint pk_sim_card primary key (sim_id))
+  constraint pk_sim_card primary key (sim_number))
 ;
 
 create table sim_usage (
   usage_id                  bigint auto_increment not null,
-  sim_card_sim_id           varchar(255),
+  sim_card_sim_number       varchar(255),
   timestamp                 bigint,
   usage_in_bytes            bigint,
   constraint pk_sim_usage primary key (usage_id))
@@ -50,8 +52,8 @@ alter table plan_pool add constraint fk_plan_pool_plan_2 foreign key (plan_plan_
 create index ix_plan_pool_plan_2 on plan_pool (plan_plan_id);
 alter table sim_card add constraint fk_sim_card_pool_3 foreign key (pool_pool_id) references plan_pool (pool_id) on delete restrict on update restrict;
 create index ix_sim_card_pool_3 on sim_card (pool_pool_id);
-alter table sim_usage add constraint fk_sim_usage_simCard_4 foreign key (sim_card_sim_id) references sim_card (sim_id) on delete restrict on update restrict;
-create index ix_sim_usage_simCard_4 on sim_usage (sim_card_sim_id);
+alter table sim_usage add constraint fk_sim_usage_simCard_4 foreign key (sim_card_sim_number) references sim_card (sim_number) on delete restrict on update restrict;
+create index ix_sim_usage_simCard_4 on sim_usage (sim_card_sim_number);
 
 
 
