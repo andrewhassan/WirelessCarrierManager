@@ -16,6 +16,7 @@ This problem will be solved by using the APIs supplied by carriers to retrieve u
 
 ## Get your environment set up ##
 1. Download and install a JDK
+
 	> **Note:** This application is being developed with *Oracle JDK 1.7*.
 2. Download the [*Play Framework*](http://www.playframework.com/)
 	> **Note:** If you're on Mac, you can install the latest Play Framework by installing homebrew and running the command `brew install play`. You can then skip this step.
