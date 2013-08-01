@@ -19,6 +19,7 @@ This problem will be solved by using the APIs supplied by carriers to retrieve u
 
 	> **Note:** This application is being developed with *Oracle JDK 1.7*.
 2. Download the [*Play Framework*](http://www.playframework.com/)
+
 	> **Note:** If you're on Mac, you can install the latest Play Framework by installing homebrew and running the command `brew install play`. You can then skip this step.
 
 	> **Another note:** The framework version matters. The version that this application is developed with is **2.1.2**. For use with another version, you will have to [upgrade the project](http://www.playframework.com/documentation/2.1.x/Migration).
@@ -29,9 +30,11 @@ This problem will be solved by using the APIs supplied by carriers to retrieve u
 
 1. Pull the source code from github.
 2. Open a terminal or command prompt and go to the source directory.
+
 	> Make sure you're in /WirelessCarrierManager/WirelessCarrierManager and that you see a bunch of folders (app, conf, logs, etc.).
 3. Type in `play`. This opens up the Play terminal for the application. When it first starts up, it will automatically download dependencies.
 4. From here, you can type commands such as `compile`, `run`, or `debug`.
+
 	> When you use `run`, Play will automatically compile any changed source files when the code is hit.
 
 > **Note:** You want to make sure that you have a MySQL database running and that you have a `wireless_carrier` schema set up. Don't worry about creating tables, Evolution will take care of that for you.
