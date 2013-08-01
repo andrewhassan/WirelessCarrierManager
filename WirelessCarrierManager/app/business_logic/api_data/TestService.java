@@ -34,8 +34,8 @@ public class TestService extends ApiService {
 		
 		// Set up carrier
 		Carrier carrier = new Carrier();
-		carrier.carrierId = 1l;
-		carrier.carrierName = "Test Carrier";
+		carrier.id = 1l;
+		carrier.name = "Test Carrier";
 		
 		// Set up plan
 		Plan plan = new Plan();
@@ -53,7 +53,7 @@ public class TestService extends ApiService {
 		pool.isUnlimited = false;
 		pool.maxBytes = 5000l;
 		pool.maxCards = 5l;
-		pool.poolId = 1l;
+		pool.id = 1l;
 		pool.plan = plan;
 		
 		// Set up Sim Card

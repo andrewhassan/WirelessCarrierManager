@@ -12,10 +12,10 @@ public class Carrier extends Model {
 	private static final long serialVersionUID = 1626099495840246441L;
 
 	@Id
-	public Long carrierId;
+	public Long id;
 	
 	@Required
-	public String carrierName;
+	public String name;
 	
 	@OneToMany(mappedBy = "carrier")
 	public List<Plan> plans;

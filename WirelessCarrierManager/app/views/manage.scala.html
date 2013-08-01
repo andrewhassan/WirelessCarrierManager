@@ -15,8 +15,8 @@
 			</thead>
 			@for(carrier <- carriers) {
 				<tr>
-					<td>@carrier.carrierId</td>
-					<td>@carrier.carrierName</td>
+					<td>@carrier.id</td>
+					<td>@carrier.name</td>
 					<td>@carrier.plans.size()</td>
 				</tr>
 			}
@@ -38,13 +38,13 @@
 			</thead>
 			@for(plan <- plans) {
 				<tr>
-					<td>@plan.planId</td>
+					<td>@plan.id</td>
 					<td>@plan.billingPeriodInDays</td>
 					<td>@plan.flatRatePerBillingPeriod</td>
 					<td>@plan.dataRatePerByte</td>
 					<td>@plan.numBytesUntilOverage</td>
 					<td>@plan.overageDataRatePerByte</td>
-					<td>@plan.carrier.carrierId</td>
+					<td>@plan.carrier.id</td>
 				</tr>
 			}
 		</table>
@@ -62,8 +62,8 @@
 			</thead>
 			@for(pool <- planPools) {
 				<tr>
-					<td>@pool.poolId</td>
-					<td>@pool.plan.planId</td>
+					<td>@pool.id</td>
+					<td>@pool.plan.id</td>
 					<td>@(if (pool.isUnlimited) "Unlimited" else pool.maxBytes)</td>
 					<td>@pool.simCards.size()</td>
 				</tr>
@@ -87,7 +87,7 @@
 				<tr>
 					<td>@sim.simNumber</td>
 					<td>@sim.displayName</td>
-					<td>@sim.pool.poolId</td>
+					<td>@sim.pool.id</td>
 					<td>TODO</td>
 					<td><a href="#">Move to another pool</a></td>
 				</tr>

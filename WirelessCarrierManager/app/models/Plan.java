@@ -10,7 +10,7 @@ public class Plan extends Model {
 	private static final long serialVersionUID = 3449260996848874860L;
 	
 	@Id
-	public Long planId;
+	public Long id;
 	
 	@Required
 	public Long billingPeriodInDays;

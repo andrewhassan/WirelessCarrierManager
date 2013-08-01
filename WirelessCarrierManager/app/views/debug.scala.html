@@ -16,8 +16,8 @@
 			</thead>
 			@for(carrier <- carriers) {
 				<tr>
-					<td>@carrier.carrierId</td>
-					<td>@carrier.carrierName</td>
+					<td>@carrier.id</td>
+					<td>@carrier.name</td>
 					<td style="font-family:monospace;">TODO</td>
 				</tr>
 			}
@@ -41,13 +41,13 @@
 			</thead>
 			@for(plan <- plans) {
 				<tr>
-					<td>@plan.planId</td>
+					<td>@plan.id</td>
 					<td>@plan.billingPeriodInDays</td>
 					<td>@plan.flatRatePerBillingPeriod</td>
 					<td>@plan.dataRatePerByte</td>
 					<td>@plan.numBytesUntilOverage</td>
 					<td>@plan.overageDataRatePerByte</td>
-					<td>@plan.carrier.carrierId</td>
+					<td>@plan.carrier.id</td>
 					<td style="font-family: monospace">TODO</td>
 				</tr>
 			}
@@ -67,8 +67,8 @@
 			</thead>
 			@for(pool <- planPools) {
 				<tr>
-					<td>@pool.poolId</td>
-					<td>@pool.plan.planId</td>
+					<td>@pool.id</td>
+					<td>@pool.plan.id</td>
 					<td>@pool.maxBytes</td>
 					<td>@pool.simCards.size()</td>
 				</tr>

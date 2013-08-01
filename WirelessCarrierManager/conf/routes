@@ -5,15 +5,22 @@
 # Home page
 GET     /                           controllers.Application.index()
 
+# Manage
 GET 	/manage						controllers.Manage.index()
+
+# Reports
+GET		/report						controllers.Report.index()
+GET		/report/:customer			controllers.Report.getReport(customer : Long)
 
 GET		/debug						controllers.Debug.index()
 
 # Debug Save
-GET		/debug/save/carrier/:name	controllers.Debug.saveCarrier(name : String)
-GET		/debug/save/plan/			controllers.Debug.savePlan(carrierId : Long)
-GET		/debug/save/pool/:name		controllers.Debug.savePool(name : String, planId : Long)
-GET		/debug/save/sim/:simNumber	controllers.Debug.saveSim(simNumber : String, poolId : Long, name : String)
+GET		/debug/save/carrier/:name				controllers.Debug.saveCarrier(name : String)
+GET		/debug/save/plan/						controllers.Debug.savePlan(carrierId : Long)
+GET		/debug/save/pool/:name					controllers.Debug.savePool(name : String, planId : Long)
+GET		/debug/save/sim/:simNumber				controllers.Debug.saveSim(simNumber : String, poolId : Long, name : String, accountId : Long)
+GET		/debug/save/customer/:customerName		controllers.Debug.saveCustomer(customerName : String)
+GET		/debug/save/account/:accountName		controllers.Debug.saveAccount(accountName : String, customerId : Long)
 
 # Debug Delete
 GET		/debug/delete/carrier/:id	controllers.Debug.deleteCarrier(id : Long)

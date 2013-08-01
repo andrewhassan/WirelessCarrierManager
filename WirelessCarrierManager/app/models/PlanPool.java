@@ -12,7 +12,7 @@ public class PlanPool extends Model {
 	private static final long serialVersionUID = 4083095490040410160L;
 
 	@Id
-	public Long poolId;
+	public Long id;
 	
 	public String displayName;
 	

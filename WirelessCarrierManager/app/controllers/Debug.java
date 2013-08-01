@@ -7,6 +7,7 @@ import business_logic.analytics.SimAnalyticsService;
 import com.avaje.ebean.Ebean;
 
 import models.Carrier;
+import models.Customer;
 import models.Plan;
 import models.PlanPool;
 import models.SimCard;
@@ -29,10 +30,10 @@ public class Debug extends Controller {
 	// SAVE METHODS
 	public static Result saveCarrier(String carrierName) {
 		Carrier testCarrier = new Carrier();
-		testCarrier.carrierName = carrierName;
+		testCarrier.name = carrierName;
 		testCarrier.plans = null;
 		Ebean.save(testCarrier);
-		return ok(testCarrier.carrierId.toString());
+		return ok(testCarrier.id.toString());
 	}
 	
 	public static Result savePlan (Long carrierId) {
@@ -51,7 +52,7 @@ public class Debug extends Controller {
 		
 		newPlan.save();
 		
-		return ok(newPlan.planId.toString());
+		return ok(newPlan.id.toString());
 		
 	}
 	
@@ -71,24 +72,54 @@ public class Debug extends Controller {
 		
 		pool.save();
 		
-		return ok(pool.poolId.toString());
+		return ok(pool.id.toString());
 		
 	}
 	
-	public static Result saveSim (String simNumber, Long poolId, String name) {
+	public static Result saveSim (String simNumber, Long poolId, String name, Long accountId) {
 		PlanPool pool = PlanPool.find.byId(poolId);
 		if (pool == null) {
 			return badRequest("Pool ID doesn't exist.");
+		}
+		
+		models.Account account = models.Account.find.byId(accountId);
+		if (account == null) {
+			return badRequest("Account ID doesn't exist.");
 		}
 		
 		SimCard sim = new SimCard();
 		sim.simNumber = simNumber;
 		sim.displayName = name;
 		sim.pool = pool;
+		sim.account = account;
 		
 		sim.save();
 		
 		return ok(sim.simNumber);
+	}
+	
+	public static Result saveCustomer (String customerName) {
+		Customer customer = new Customer();
+		customer.name = customerName;
+		
+		customer.save();
+		
+		return ok(customer.id.toString());
+	}
+	
+	public static Result saveAccount (String accountName, Long customerId) {
+		Customer customer = Customer.find.byId(customerId);
+		if (customer == null) {
+			return badRequest("Customer ID couldn't be found.");
+		}
+		
+		models.Account account = new models.Account();
+		
+		account.customer = customer;
+		account.name = accountName;
+		account.save();
+		
+		return ok (account.id.toString());
 	}
 
 	
@@ -127,10 +158,10 @@ public class Debug extends Controller {
 		}
 		
 		StringBuilder result = new StringBuilder();
-		result.append("Carrier name: " + carrier.carrierName + "\n");
+		result.append("Carrier name: " + carrier.name + "\n");
 		result.append("Plans: \n");
 		for (Plan plan : carrier.plans) {
-			result.append("\t" + plan.planId + "\n");
+			result.append("\t" + plan.id + "\n");
 		}
 		
 		return ok (result.toString());
@@ -144,12 +175,12 @@ public class Debug extends Controller {
 		}
 		
 		StringBuilder result = new StringBuilder();
-		result.append("Plan ID: " + plan.planId + "\n");
+		result.append("Plan ID: " + plan.id + "\n");
 		result.append("Plan Pools: \n");
 		for (PlanPool pool : plan.pools ) {
 			result.append("\t" + pool.displayName + "\n");
 		}
-		result.append("Carrier: " + plan.carrier.carrierName);
+		result.append("Carrier: " + plan.carrier.name);
 		
 		return ok (result.toString());
 		
@@ -162,9 +193,9 @@ public class Debug extends Controller {
 		}
 		
 		StringBuilder result = new StringBuilder();
-		result.append("Pool ID:" + pool.poolId + "\n");
+		result.append("Pool ID:" + pool.id + "\n");
 		result.append("Name: " + pool.displayName + "\n");
-		result.append("Plan ID: " + pool.plan.planId + "\n");
+		result.append("Plan ID: " + pool.plan.id + "\n");
 		result.append("Sim Cards: \n");
 		for (SimCard sim : pool.simCards) {
 			result.append("\t" + sim.displayName + "\n");

@@ -1,0 +1,30 @@
+@(customers: List[Customer])
+
+@main("Reports") {
+	<div class="hero-unit">
+		<h1>Reports</h1>
+		 
+		<form id="customerForm" method="get" action="/report">
+			<select>
+				@for(customer <- customers) {
+					<option value="@customer.id">@customer.name</option>	
+				}
+			</select>
+			<input id="formSubmit" type="submit" />
+		</form>
+		
+	</div>
+} {
+	<script type="text/javascript">
+		$("#customerForm").submit(function(e) {
+			// Stop the form from submitting
+			e.preventDefault(true);
+			
+			// Find the selected customer
+			var customer = $(this).find("select:first-child");
+			
+			// Hit the correct endpoint (/report/"customer")
+			window.location.href = "/report/" + customer.val();
+		});
+	</script>
+}

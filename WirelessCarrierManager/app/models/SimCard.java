@@ -18,6 +18,9 @@ public class SimCard extends Model {
 	@ManyToOne
 	public PlanPool pool;
 	
+	@ManyToOne
+	public Account account;
+	
 	@OneToMany(mappedBy = "simCard")
 	public List<SimUsage> usages;
 	
